@@ -1,11 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-function Map({navigation}) {
+function Map({navigation, route}) {
+  const {long, lati, name, tempe, count} = route.params;
+
   const initialRegion = {
-    latitude: -34.6132,
-    longitude: -58.3772,
+    latitude: lati,
+    longitude: long,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
@@ -14,8 +16,14 @@ function Map({navigation}) {
       <MapView
         style={{flex: 1}}
         provider={PROVIDER_GOOGLE}
-        initialRegion={initialRegion}
-      />
+        initialRegion={initialRegion}>
+        <Marker
+          coordinate={{
+            latitude: lati,
+            longitude: long,
+          }}
+          title={`${name}, ${count} | ${tempe}°`}></Marker>
+      </MapView>
     </View>
   );
 }
