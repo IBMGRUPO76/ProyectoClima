@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   Text,
   Alert,
+  Keyboard,
 } from 'react-native';
 
-function MaterialUnderlineTextbox({search, saveSearch, saveLook}) {
+function SearchBar({search, saveSearch, saveLook}) {
   const {city} = search;
 
   const lookWeather = () => {
@@ -17,6 +18,7 @@ function MaterialUnderlineTextbox({search, saveSearch, saveLook}) {
       return;
     }
     saveLook(true);
+    Keyboard.dismiss();
   };
   const showAlert = () => {
     Alert.alert('Error', 'Agrega una ciudad', [{text: 'Entendido'}]);
@@ -28,7 +30,10 @@ function MaterialUnderlineTextbox({search, saveSearch, saveLook}) {
         value={city}
         placeholder="Ciudad"
         onChangeText={city => saveSearch({...search, city})}
-        style={styles.inputStyle}></TextInput>
+        style={styles.inputStyle}
+        returnKeyType="done"
+        onSubmitEditing={() => lookWeather()}></TextInput>
+
       <TouchableOpacity onPress={() => lookWeather()}>
         <Text style={{color: '#000', fontSize: 15}}>Buscar</Text>
       </TouchableOpacity>
@@ -58,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MaterialUnderlineTextbox;
+export default SearchBar;
