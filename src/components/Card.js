@@ -2,16 +2,18 @@ import React from 'react';
 import {
   Text,
   View,
-  ImageBackground,
   StyleSheet,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
-const Card = ({item, eliminarCiudad}) => {
+const Card = ({item, eliminarCiudad, navigation}) => {
   const eliminarC = id => {
     console.log('Eliminada');
     eliminarCiudad(id);
   };
+
+  const car = item;
 
   return (
     <View style={styles.container}>
@@ -36,6 +38,18 @@ const Card = ({item, eliminarCiudad}) => {
           {item.max}
         </Text>
       </View>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Map', {
+            long: car.lon,
+            lati: car.lat,
+            tempe: car.temp,
+            name: car.nombre,
+            count: car.pais,
+          })
+        }>
+        <Text>Ir a mapa </Text>
+      </TouchableOpacity>
     </View>
   );
 };
