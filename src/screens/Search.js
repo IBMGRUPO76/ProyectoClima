@@ -4,11 +4,9 @@ import {
   View,
   ScrollView,
   Alert,
-  TouchableOpacity,
-  Text,
   FlatList,
 } from 'react-native';
-import MaterialCardWithTextOverImage from '../components/SearchCard';
+import SearchCard from '../components/SearchCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -47,19 +45,10 @@ function Search({navigation}) {
   //Eliminar ciudades del state
 
   const eliminarCiudad = id => {
-    setCiudad(ciudadesActuales => {
-      return ciudadesActuales.filter(ciudad => ciudad.id !== id);
-    });
+    const ciudadesEliminadas = ciudad.filter(ciudad => ciudad.id !== id);
+    setCiudad(ciudadesEliminadas);
+    saveCitiesStore(JSON.stringify(ciudadesEliminadas));
   };
-
-  //Guardar ciudades
-  // const saveCities = async citiesJSON => {
-  //   try {
-  //     await AsyncStorage.setItem('cities', citiesJSON);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const [search, saveSearch] = useState({
     city: '',
@@ -92,26 +81,52 @@ function Search({navigation}) {
     ]);
   };
 
+  //Renderizar ciudades del storage
+  useEffect(() => {
+    const getCiudadesStore = async () => {
+      try {
+        const ciudadStore = await AsyncStorage.getItem('ciudadG');
+        if (ciudadStore) {
+          setCiudad(JSON.parse(ciudadStore));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCiudadesStore();
+  }, []);
+  // Guardar ciudades storage
+
+  const saveCitiesStore = async ciudadesJSON => {
+    try {
+      await AsyncStorage.setItem('ciudadG', ciudadesJSON);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Map')}>
-        <Text>Ir a mapa </Text>
-      </TouchableOpacity>
       <SearchBar
         search={search}
         saveSearch={saveSearch}
         saveLook={saveLook}></SearchBar>
       <ScrollView>
         <View>
-          <MaterialCardWithTextOverImage
+          <SearchCard
             result={result}
             setCiudad={setCiudad}
-            ciudad={ciudad}></MaterialCardWithTextOverImage>
+            ciudad={ciudad}
+            saveCitiesStore={saveCitiesStore}></SearchCard>
 
           <FlatList
             data={ciudad}
             renderItem={({item}) => (
-              <Card item={item} eliminarCiudad={eliminarCiudad} />
+              <Card
+                item={item}
+                eliminarCiudad={eliminarCiudad}
+                navigation={navigation}
+              />
             )}
             keyExtractor={ciudad => ciudad.id}></FlatList>
         </View>
@@ -126,4 +141,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
