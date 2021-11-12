@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
 import shortid from 'shortid';
 
-function MaterialCardWithTextOverImage({result, ciudad, setCiudad}) {
+function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
   const {name, main, sys, coord} = result;
 
   if (!name) return null;
@@ -28,6 +28,8 @@ function MaterialCardWithTextOverImage({result, ciudad, setCiudad}) {
 
     const ciudades = [...ciudad, ciudadN];
     setCiudad(ciudades);
+
+    saveCitiesStore(JSON.stringify(ciudades));
   };
 
   return (
@@ -136,4 +138,4 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
 });
-export default MaterialCardWithTextOverImage;
+export default SearchCard;
