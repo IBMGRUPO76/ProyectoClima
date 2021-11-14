@@ -9,9 +9,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import nuiz from './assets/nuiz.png';
-import nuder from './assets/nuder.png';
-import sol from './assets/sol.png';
+import nuiz from '../assets/images/nuiz.png';
+import nuder from '../assets/images/nuder.png';
+import sol from '../assets/images/sol.png';
 
 const Splash = ({navegation}) => {
   const [animated, setAnimated] = useState(false);
