@@ -8,18 +8,22 @@ Para ello desarrollamos un proyecto en React Native CLI que pueda consultar
 desde un servicio de clima la temperatura de diferentes lugares y luego 
 mostrarlos en un mapa. 
 
+## Instalación 🔧
+
+Para realizar el proceso de instalación automática de las dependencias es necesario ejecutar el siguiente comando en consola:
 
 ```
-hola
+npm install
 ```
 
+Una vez instalado van a poder ejecutar la app con:
 
 
+```
+npx react-native run-android
+```
 
-
-
-
-
+Tener en cuenta que deben contar con un emulador android sdk para poder ejecutar la misma.
 
 ## Preview 👁️‍🗨️
 
