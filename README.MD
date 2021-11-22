@@ -1,35 +1,44 @@
 # Checlima  🚀
 
-Somos integrantes del Equipo 76 del IBM StillsBuild for job seekers. 
+Somos integrantes del Equipo 76 del IBM SkillsBuild for job seekers. 
 Paula vendedora de helados nos pidió ayuda dado que necesitaba una 
-app para conocer los lugares con mejor clima parA aprovechar mejor la venta. 
+app para conocer los lugares con mejor clima para optimizar sus ventas. 
 
 Para ello desarrollamos un proyecto en React Native CLI que pueda consultar 
 desde un servicio de clima la temperatura de diferentes lugares y luego 
 mostrarlos en un mapa. 
 
-Durante el desarrollo del proyecto para el control de versiones usamos 
-Github y utilizamos distintas herramientas de diseño como: Figma, 
-Photoshop, Wireframe.cc y react-native-vector-icons.
 
-## Construido con 🛠️
-
-* [REACT-JS](hhtp://www.react.org/) - Librería open source de JavaScript para desarrollar interfaces de usuario
-* [JAVASCRIPT]() - Lenguaje de programación interpretado
-* [HTML](https://www.w3.org/) - Lenguaje de etiquetas
-* [CSS](https://www.w3.org/) - Hojas de estilos
-* [SASS](https://sass-lang.com/) - Procesador 
-* [GIT](https://git-scm.com/) - Sistema de control de versiones
-* [GITHUB](https://github.com/) - Repositorio online
+´´´
+hola
+´´´
 
 
-dependencias utilizadas 
+
+
+
+
+
 
 
 ## Preview 👁️‍🗨️
 
 
-## Demo 💻
+
+## Dependencias utilizadas  🛠️
+
+* "@react-native-async-storage/async-storage": "^1.15.11",
+* "@react-navigation/bottom-tabs": "^6.0.9",
+* "@react-navigation/native": "^6.0.6",
+* "@react-navigation/native-stack": "^6.2.5",
+* "lottie-react-native": "^4.1.3",
+* "react": "17.0.2",
+* "react-native": "0.66.1",
+* "react-native-maps": "^0.29.3",
+* "react-native-safe-area-context": "^3.3.2",
+* "react-native-screens": "^3.8.0",
+* "react-native-vector-icons": "^9.0.0",
+* "shortid": "^2.2.16"
 
 
 
