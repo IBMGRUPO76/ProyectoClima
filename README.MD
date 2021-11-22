@@ -27,7 +27,7 @@ Tener en cuenta que deben contar con un emulador android sdk para poder ejecutar
 
 ## Preview 👁️‍🗨️
 
---App Navigation
+      App Navigation
 
 ![bloggif_619bb64eaa5f6](https://user-images.githubusercontent.com/92958422/142888348-e98de2b0-e037-4ec5-9dd6-7dff48e8ee0d.gif) ![bloggif_619bb68480e00](https://user-images.githubusercontent.com/92958422/142888475-ca6583f7-706e-44e4-8dd8-52ee8002e9e8.gif)
 
