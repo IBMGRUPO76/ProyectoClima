@@ -8,6 +8,7 @@ import Map from './Map';
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 const Stack = createNativeStackNavigator();
+import {poneTuApiKey} from '../config/keys.js';
 
 export function Mapa() {
   return (
@@ -60,7 +61,7 @@ function Search({navigation}) {
   useEffect(() => {
     const lookWeather = async () => {
       if (look) {
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=502d18d2e3c71497990f825d744c3517&lang=es`;
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${poneTuApiKey}&lang=es`;
 
         try {
           const response = await fetch(url);
