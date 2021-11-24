@@ -15,6 +15,8 @@ Para realizar el proceso de instalación automática de las dependencias es nece
 ```
 npm install
 ```
+Antes de ejecutar la app colocar tu apikey de https://openweathermap.org/api en config/keys.js
+
 
 Una vez instalado van a poder ejecutar la app con:
 
