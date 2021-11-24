@@ -56,10 +56,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#d3d3d3',
     borderBottomWidth: 1,
     width: 300,
+    textAlign: 'center',
   },
   butt: {
-    padding: 8,
-    height: 36,
+    color: '#000',
+    fontSize: 15,
   },
 });
 

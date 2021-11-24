@@ -1,19 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Animated,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Animated, StatusBar, StyleSheet, Text, View} from 'react-native';
 import nuiz from '../assets/images/nuiz.png';
 import nuder from '../assets/images/nuder.png';
 import sol from '../assets/images/sol.png';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Home, Mapa, AboutUs} from '../screens/index.js';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Splash = ({navegation}) => {
+const Tab = createBottomTabNavigator();
+
+const Splash = ({}) => {
   const [animated, setAnimated] = useState(false);
   const [show] = useState(new Animated.Value(0));
   const [positionl, setPositionl] = useState(new Animated.Value(-200));
@@ -22,41 +19,39 @@ const Splash = ({navegation}) => {
   const [font, setFont] = useState(new Animated.Value(1));
 
   useEffect(() => {
-   
-      Animated.parallel([
-        Animated.timing(show, {
-          toValue: 1,
-          duration: 4000,
-          useNativeDriver: false,
-        }),
+    Animated.parallel([
+      Animated.timing(show, {
+        toValue: 1,
+        duration: 4000,
+        useNativeDriver: false,
+      }),
 
-        Animated.timing(positionl, {
-          toValue: 105,
-          duration: 3000,
-          useNativeDriver: false,
-        }),
+      Animated.timing(positionl, {
+        toValue: 105,
+        duration: 3000,
+        useNativeDriver: false,
+      }),
 
-        Animated.timing(positionr, {
-          toValue: 105,
-          duration: 3000,
-          useNativeDriver: false,
-        }),
+      Animated.timing(positionr, {
+        toValue: 105,
+        duration: 3000,
+        useNativeDriver: false,
+      }),
 
-        Animated.timing(positiont, {
-          toValue: 170,
-          duration: 3000,
-          useNativeDriver: false,
-        }),
-      ]).start( () => Animated.timing(font, {
+      Animated.timing(positiont, {
+        toValue: 170,
+        duration: 3000,
+        useNativeDriver: false,
+      }),
+    ]).start(() =>
+      Animated.timing(font, {
         toValue: 200,
         duration: 5000,
         useNativeDriver: false,
-      }).start(()=>setAnimated(true)))
-  
+      }).start(() => setAnimated(true)),
+    );
   }, []);
-  
-  //navigation.navigate('Home'); 
-  
+
   if (!animated)
     return (
       <>
@@ -74,8 +69,10 @@ const Splash = ({navegation}) => {
             style={[styles.nubes, {right: positionr}]}
             source={nuder}
           />
-          <Animated.Image style={[styles.sol, {top: positiont, transform: [{scale:font}]}]} 
-            source={sol} />
+          <Animated.Image
+            style={[styles.sol, {top: positiont, transform: [{scale: font}]}]}
+            source={sol}
+          />
 
           <Animated.Text style={[styles.h2, {opacity: show}]}>
             Che Clima
@@ -86,7 +83,46 @@ const Splash = ({navegation}) => {
         </View>
       </>
     );
-  return <Text>Inicio Aplicacion</Text>;
+  return (
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Screen
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="home" color={'red'} size={20} />
+            ),
+          }}
+          name="Inicio"
+          component={Home}
+        />
+        <Tab.Screen
+          options={{
+            tabBarLabel: 'Map',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="map" color={'red'} size={20} />
+            ),
+          }}
+          name="Mapa"
+          component={Mapa}
+        />
+        <Tab.Screen
+          options={{
+            tabBarLabel: 'Nosotros',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons
+                name="account-group"
+                color={'red'}
+                size={20}
+              />
+            ),
+          }}
+          name="Nosotros"
+          component={AboutUs}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 };
 
 const styles = StyleSheet.create({

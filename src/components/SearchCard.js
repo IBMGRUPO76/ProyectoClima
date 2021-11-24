@@ -3,14 +3,13 @@ import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
 import shortid from 'shortid';
 
 function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
-  const {name, main, sys, coord} = result;
+  const {name, main, sys, coord, weather} = result;
 
   if (!name) return null;
 
   const kel = 273.15;
 
   console.log(result);
-
   //definimos variables a pasar
   const nombre = name;
   const pais = sys.country;
@@ -19,10 +18,12 @@ function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
   const min = parseInt(main.temp_min - kel);
   const lon = coord.lon;
   const lat = coord.lat;
+  const clima = weather[0].icon;
+  const desc = weather[0].description;
 
   //Tomamos los datos de la ciudad buscada
   const guardarCiudad = () => {
-    const ciudadN = {nombre, pais, temp, max, min, lon, lat};
+    const ciudadN = {nombre, pais, temp, max, min, lon, lat, clima, desc};
 
     ciudadN.id = shortid.generate();
 
@@ -33,7 +34,8 @@ function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
   };
 
   return (
-    <View style={([styles.container], {height: 250, width: 375})}>
+    <View
+      style={([styles.container], {height: 250, width: 375, borderRadius: 30})}>
       <Image
         source={require('../assets/images/cardImage.jpg')}
         style={styles.cardItemImagePlace}></Image>
@@ -67,11 +69,6 @@ function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
         </View>
         <View style={styles.actionBody}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Map')}
-            style={styles.actionButton1}>
-            <Text style={styles.actionText1}>Ver en mapa</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
             onPress={() => guardarCiudad()}
             style={styles.actionButton1}>
             <Text style={styles.actionText1}>Guardar</Text>
@@ -85,7 +82,7 @@ function SearchCard({result, ciudad, setCiudad, saveCitiesStore}) {
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
-    borderRadius: 2,
+    borderRadius: 30,
     borderColor: '#CCC',
     flexWrap: 'nowrap',
     backgroundColor: '#FFF',
@@ -125,7 +122,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
   },
   actionButton1: {
     padding: 8,

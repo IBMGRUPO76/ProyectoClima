@@ -17,28 +17,8 @@ const Card = ({item, eliminarCiudad, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight style={styles.but} onPress={() => eliminarC(item.id)}>
-        <Text style={styles.textbut}>x</Text>
-      </TouchableHighlight>
-      <View>
-        <Text>
-          {item.nombre}, {item.pais}
-        </Text>
-      </View>
-      <View>
-        <Text>Temperatura: {item.temp}</Text>
-      </View>
-      <View style={styles.minmax}>
-        <Text>
-          Min {'\n'}
-          {item.min}
-        </Text>
-        <Text>
-          Max {'\n'}
-          {item.max}
-        </Text>
-      </View>
       <TouchableOpacity
+        style={{marginLeft: 10}}
         onPress={() =>
           navigation.navigate('Map', {
             long: car.lon,
@@ -46,33 +26,49 @@ const Card = ({item, eliminarCiudad, navigation}) => {
             tempe: car.temp,
             name: car.nombre,
             count: car.pais,
+            mini: car.min,
+            maxi: car.max,
+            weat: car.clima,
+            des: car.desc,
           })
         }>
         <Text>Ir a mapa </Text>
       </TouchableOpacity>
+      <View style={{marginRight: 34}}>
+        <Text>
+          {item.nombre}, {item.pais}
+        </Text>
+      </View>
+
+      <TouchableHighlight style={styles.but} onPress={() => eliminarC(item.id)}>
+        <Text style={styles.textbut}>x</Text>
+      </TouchableHighlight>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#fff',
-    height: 120,
+    height: 50,
     width: '100%',
     borderColor: '#000',
     borderStyle: 'solid',
     borderBottomWidth: 1,
     borderBottomColor: '#000',
-    marginTop: 40,
   },
   minmax: {flex: 1, flexDirection: 'row'},
   but: {
+    height: 20,
     backgroundColor: 'red',
     borderRadius: 10,
     width: 20,
     alignItems: 'center',
+    marginRight: 10,
   },
   textbut: {
     color: '#fff',

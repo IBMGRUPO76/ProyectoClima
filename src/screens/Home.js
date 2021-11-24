@@ -4,33 +4,38 @@ import {StyleSheet, View, Image, ImageBackground, Text} from 'react-native';
 export function Home() {
   return (
     <View style={styles.container}>
-      <View style={styles.imageStack}>
-        <ImageBackground
-          source={require('../assets/images/10087.jpg')}
+      <View style={styles.somosCheclima2Row}>
+        <Image
+          source={require('../assets/images/layer2.png')}
           resizeMode="contain"
-          style={styles.image}
-          imageStyle={styles.image_imageStyle}>
-          <Text style={styles.loremIpsum2}>
-            Todas las busquedas van a poder ser guardadas para que puedas
-            acceder a ellas cuando quieras!
-          </Text>
-        </ImageBackground>
+          style={styles.image2}
+        />
+        <Image
+          source={require('../assets/images/rain.png')}
+          style={{width: 300, height: 250, marginRight: 20}}
+          resizeMode="contain"
+        />
+      </View>
+      <View style={styles.imageStack}>
+        <Text style={styles.loremIpsum}>
+          Una aplicacion que brinda un {'\n'}servicio del clima de distintas{' '}
+          {'\n'}ciudades en tiempo real.
+        </Text>
+        <Text style={styles.loremIpsum2}>
+          Todas las busquedas van a poder ser guardadas para que puedas acceder
+          a ellas cuando quieras!
+        </Text>
         <Text style={styles.loremIpsum1}>
           Desde la sección mapas vas a poder{'\n'}realizar busquedas de
           cualquier ciudad del mundo
         </Text>
+
+        <ImageBackground
+          source={require('../assets/images/10087.png')}
+          resizeMode="cover"
+          style={styles.image}
+          imageStyle={styles.image_imageStyle}></ImageBackground>
       </View>
-      <View style={styles.somosCheclima2Row}>
-        <Text style={styles.somosCheclima2}>Somos Checlima</Text>
-        <Image
-          source={require('../assets/images/rain.jpg')}
-          resizeMode="contain"
-          style={styles.image2}></Image>
-      </View>
-      <Text style={styles.loremIpsum}>
-        Una aplicacion que brinda un {'\n'}servicio del clima de distintas{' '}
-        {'\n'}ciudades en tiempo real.
-      </Text>
     </View>
   );
 }
@@ -38,12 +43,12 @@ export function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(255,255,255,1)',
+    backgroundColor: '#fff',
   },
   image: {
-    top: 10,
+    top: 130,
     width: 503,
-    height: 471,
+    height: 321,
     position: 'absolute',
     backgroundColor: 'rgba(15,15, 15,0)',
     left: 0,
@@ -51,22 +56,22 @@ const styles = StyleSheet.create({
   image_imageStyle: {},
   loremIpsum2: {
     fontFamily: 'poppins-regular',
-    color: '#121212',
+    color: '#000',
     textAlign: 'center',
-    fontSize: 12,
+    fontSize: 13,
     width: 223,
     height: 60,
-    marginTop: 62,
-    marginLeft: 186,
+    marginTop: 85,
+    marginLeft: 160,
   },
   loremIpsum1: {
-    top: 0,
+    top: 10,
     position: 'absolute',
     fontFamily: 'poppins-regular',
-    color: '#121212',
+    color: '#000',
     left: 58,
     textAlign: 'center',
-    fontSize: 12,
+    fontSize: 13,
     width: 223,
     height: 60,
   },
@@ -83,26 +88,26 @@ const styles = StyleSheet.create({
     marginTop: 160,
   },
   image2: {
-    width: 200,
-    height: 200,
+    width: 120,
+    height: 120,
+    bottom:10,
+    left:20,
     borderRadius: 100,
     backgroundColor: 'rgba(15,15, 15,0)',
-    marginLeft: 32,
   },
   somosCheclima2Row: {
-    height: 200,
+    flex: 0.3,
     flexDirection: 'row',
-    marginTop: -762,
-    marginLeft: 12,
-    marginRight: -13,
   },
   loremIpsum: {
     fontFamily: 'poppins-regular',
     color: '#121212',
     textAlign: 'center',
-    fontSize: 12,
+    position: 'absolute',
+    fontSize: 13,
     width: 223,
     height: 60,
-    marginLeft: 140,
+    marginLeft: 45,
+    bottom: 500,
   },
 });

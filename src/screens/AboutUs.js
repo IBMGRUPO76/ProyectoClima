@@ -17,9 +17,9 @@ export function AboutUs() {
       <View style={styles.scrollArea}>
         <ScrollView
           contentContainerStyle={styles.scrollArea_contentContainerStyle}>
-          <Text style={styles.loremIpsum5}>EL CHAMU DE COMO LO HICIMOS</Text>
+          <Text style={styles.loremIpsum5}>Nosotros</Text>
           <Text style={styles.loremIpsum4}>
-            ´´Somos integrantes del Equipo 76 del IBM StillsBuild for job
+            ´´Somos integrantes del Equipo 76 del IBM SkillsBuild for job
             seekers. Paula vendedora de helados nos pidió ayuda dado que
             necesitaba una app para conocer los lugares con mejor clima para
             aprovechar mejor la venta.{'\n'}
@@ -31,7 +31,7 @@ export function AboutUs() {
             diseño como: Figma, Photoshop, Wireframe.cc y
             react-native-vector-icons´´
           </Text>
-          <Text style={styles.theCrew}>The Crew</Text>
+          <Text style={styles.theCrew}>Integrantes del equipo</Text>
           <Image
             source={require('../assets/images/1619176266280.jpg')}
             resizeMode="cover"
@@ -140,6 +140,91 @@ export function AboutUs() {
           <Text style={styles.loremIpsum6}>
             Enlaces de herramientas{'\n'}UX
           </Text>
+          <View style={{flex: 0.4, flexDirection: 'column'}}>
+            <View style={styles.uxView}>
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() =>
+                    Linking.openURL('https://www.figma.com/design-systems/')
+                  }>
+                  <Image
+                    source={require('../assets/images/figma.png')}
+                    style={styles.uxIcon}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>Figma</Text>
+              </View>
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() =>
+                    Linking.openURL(
+                      'https://creativecloud.adobe.com/es/discover/how-to/?filter=photography',
+                    )
+                  }>
+                  <Image
+                    source={require('../assets/images/adobe-photoshop.png')}
+                    style={styles.uxIcon}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>Photoshop</Text>
+              </View>
+            </View>
+
+            <View style={styles.uxView}>
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() => Linking.openURL('https://wireframe.cc/docs/')}>
+                  <Image
+                    source={require('../assets/images/wireframes.png')}
+                    style={styles.uxIcon}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>Wireframe.cc</Text>
+              </View>
+
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() =>
+                    Linking.openURL('https://github.com/Nahuelhsouto')
+                  }>
+                  <Image
+                    source={require('../assets/images/pngwing.png')}
+                    style={styles.uxIcon}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>Inkscape</Text>
+              </View>
+            </View>
+            <View style={styles.uxView}>
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() =>
+                    Linking.openURL('https://obsproject.com/docs/')
+                  }>
+                  <Image
+                    source={require('../assets/images/obs.png')}
+                    style={styles.uxIcon1}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>OBS</Text>
+              </View>
+
+              <View style={styles.viewIcon}>
+                <TouchableWithoutFeedback
+                  onPress={() =>
+                    Linking.openURL(
+                      'https://material.io/design/introduction#components',
+                    )
+                  }>
+                  <Image
+                    source={require('../assets/images/md.png')}
+                    style={styles.uxIcon}
+                  />
+                </TouchableWithoutFeedback>
+                <Text style={styles.textIcon}>MaterialDesign</Text>
+              </View>
+            </View>
+          </View>
         </ScrollView>
       </View>
     </View>
@@ -161,11 +246,19 @@ const styles = StyleSheet.create({
     height: 2131,
     width: 350,
   },
+  viewIcon: {
+    flex: 0.2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 180,
+  },
   loremIpsum5: {
     fontFamily: 'roboto-regular',
+    fontSize: 40,
     color: '#121212',
     marginTop: 48,
-    marginLeft: 80,
+    marginLeft: 100,
   },
   loremIpsum4: {
     fontFamily: 'roboto-regular',
@@ -174,12 +267,32 @@ const styles = StyleSheet.create({
     marginTop: 58,
     marginLeft: 10,
   },
+  uxIcon: {
+    width: 50,
+    height: 50,
+  },
+  uxIcon1: {
+    width: 50,
+    height: 50,
+  },
+  uxView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 100,
+  },
+  textIcon: {
+    color: '#000',
+    fontSize: 10,
+    height: 50,
+    marginTop: 10,
+  },
   theCrew: {
-    fontFamily: 'roboto-regular',
+    fontFamily: 'poppin',
     color: '#121212',
-    fontSize: 20,
+    fontSize: 30,
     marginTop: 114,
-    marginLeft: 137,
+    marginLeft: 27,
   },
   image: {
     width: 124,
@@ -340,8 +453,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     marginTop: 65,
-    marginLeft: 31,
+    marginLeft: 8,
   },
 });
 
-
+// Agregar los enlaces de las herramientas.

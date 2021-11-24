@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Alert,
-  FlatList,
-} from 'react-native';
+import {StyleSheet, View, Alert, FlatList} from 'react-native';
 import SearchCard from '../components/SearchCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationContainer} from '@react-navigation/native';
@@ -19,8 +13,12 @@ export function Mapa() {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
-        <Stack.Screen name="Busqueda" component={Search} />
-        <Stack.Screen name="Map" component={Map} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Busqueda"
+          component={Search}
+        />
+        <Stack.Screen options={{title: ''}} name="Map" component={Map} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -39,6 +37,8 @@ function Search({navigation}) {
       min: 20,
       lon: 0,
       lat: 0,
+      clima: '04a',
+      desc: 'templado',
     },
   ]);
 
@@ -60,7 +60,7 @@ function Search({navigation}) {
   useEffect(() => {
     const lookWeather = async () => {
       if (look) {
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=502d18d2e3c71497990f825d744c3517`;
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=502d18d2e3c71497990f825d744c3517&lang=es`;
 
         try {
           const response = await fetch(url);
@@ -111,26 +111,26 @@ function Search({navigation}) {
         search={search}
         saveSearch={saveSearch}
         saveLook={saveLook}></SearchBar>
-      <ScrollView>
-        <View>
-          <SearchCard
-            result={result}
-            setCiudad={setCiudad}
-            ciudad={ciudad}
-            saveCitiesStore={saveCitiesStore}></SearchCard>
 
-          <FlatList
-            data={ciudad}
-            renderItem={({item}) => (
-              <Card
-                item={item}
-                eliminarCiudad={eliminarCiudad}
-                navigation={navigation}
-              />
-            )}
-            keyExtractor={ciudad => ciudad.id}></FlatList>
-        </View>
-      </ScrollView>
+      <View>
+        <SearchCard
+          result={result}
+          setCiudad={setCiudad}
+          ciudad={ciudad}
+          saveCitiesStore={saveCitiesStore}></SearchCard>
+
+        <FlatList
+          data={ciudad}
+          renderItem={({item}) => (
+            <Card
+              result={result}
+              item={item}
+              eliminarCiudad={eliminarCiudad}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={ciudad => ciudad.id}></FlatList>
+      </View>
     </View>
   );
 }
