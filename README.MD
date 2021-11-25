@@ -37,6 +37,10 @@ Tener en cuenta que deben contar con un emulador android sdk para poder ejecutar
    
 ![bloggif_619bb68480e00](https://user-images.githubusercontent.com/92958422/142888475-ca6583f7-706e-44e4-8dd8-52ee8002e9e8.gif)
 
+ <h3>Mapa</h3>
+ 
+![bloggif_619ef6d0b0f11](https://user-images.githubusercontent.com/92958422/143370173-0dfe212b-54ad-400f-9f2f-dae6715c0bc8.gif)
+
 
 ## Dependencias utilizadas  🛠️
 
